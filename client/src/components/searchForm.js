@@ -14,7 +14,7 @@ const Search = (prop) => (
                     </div>
                     
                     <div className="col-auto">
-                        <button className="btn btn-lg btn-success" type="submit">Search</button>
+                        <button className="btn btn-lg btn-success" type="submit" onClick = {prop.submit}>Search</button>
                     </div>
                    
                 </div>

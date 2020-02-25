@@ -7,14 +7,19 @@ import Search from "../components/searchForm.js";
 
 
 const AddBook = () => {
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState({})
 
 
-    useEffect(() => {
-        API.search()
-        .then(res => setSearch(res.data.message))
+    const submit = (event) => {
+        event.preventDefault();
+
+        API.search(search)
+        .then(res => {(
+            setSearch(res))
+            console.log(res.data.items[0])
+        })
         .catch(error => console.log(error));
-    }, [search]);
+    };
 
 
 
@@ -37,7 +42,10 @@ const AddBook = () => {
                 sentence = {"Enter By Title or Author"}
             />
             
-            <Search/>
+            <Search
+            submit = {submit}
+            setSearch = {setSearch}
+            />
 
 
 
