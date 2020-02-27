@@ -7,7 +7,34 @@ import Search from "../components/searchForm.js";
 
 
 const AddBook = () => {
-   
+    const [search, setSearch] = useState("")
+
+
+
+
+    const setChange = (event) => setSearch(event.target.value)
+
+
+    const handleFormSubmit = (event) => {
+        
+        API.search(search)
+        .then(res => (
+            setSearch(res.data.message),
+            console.log(res))
+        )
+        .catch(error => console.log(error));
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     
@@ -22,7 +49,8 @@ const AddBook = () => {
             />
             
             <Search
-                
+            setChange = {setChange}
+            submit = {handleFormSubmit}
             
             />
 
