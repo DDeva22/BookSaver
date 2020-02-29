@@ -14,6 +14,15 @@ const AddBook = () => {
     
     const [search, setSearch] = useState("")
     const [results, setResults] = useState([]);
+    const [inputFields, setInputFields] = useState({
+        title: "",
+        author: "",
+        description: "",
+        image: "",
+        link: ""
+        
+    });
+
     let i;
 
     useEffect(() => {
@@ -37,10 +46,29 @@ const AddBook = () => {
     }
 
 
-   const addMongo = (i) => {
+   const addMongo = async(i) => {
 
     console.log("Clicked");
     console.log(i);
+    await API.saveBook({
+        ...inputFields,
+    });
+    setInputFields({
+        title: results[i].volumeInfo.title,
+        author: results[i].volumeInfo.authors,
+        description: results[i].volumeInfo.description,
+        image: results[i].volumeInfo.infoLink,
+        link: results[i].volumeInfo.imageLinks === undefined ? "" : results[i].volumeInfo.imageLinks.thumbnail
+
+        
+    });
+
+                            
+
+
+
+
+
    }
 
 
