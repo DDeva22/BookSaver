@@ -9,9 +9,9 @@ router.route("/")
 
 router
     .route("/:id")
-    .get(booksController.findById)
-    .put(booksController.update)
-    .delete(booksController.remove);
+    .get(inquiryController.findById)
+    .put(inquiryController.update)
+    .delete(inquiryController.remove);
 
 
 
