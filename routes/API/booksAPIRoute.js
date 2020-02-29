@@ -7,10 +7,11 @@ router.route("/")
     .post(inquiryController.create);
 
 
-router.route("/:id")
-    .get(inquiryController.findById)
-    .put(inquiryController.update)
-    .delete(inquiryController.remove);
+router
+    .route("/:id")
+    .get(booksController.findById)
+    .put(booksController.update)
+    .delete(booksController.remove);
 
 
 

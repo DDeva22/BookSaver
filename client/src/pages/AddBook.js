@@ -4,10 +4,17 @@ import Jumbotron from "../components/jumbotron.js";
 import Card from "../components/card.js";
 import Navbar from "../components/navbar.js";
 import Search from "../components/searchForm.js";
+import Button from "../components/formButton.js";
+
+
+
+
 
 const AddBook = () => {
+    
     const [search, setSearch] = useState("")
     const [results, setResults] = useState([]);
+    let i;
 
     useEffect(() => {
         
@@ -30,22 +37,11 @@ const AddBook = () => {
     }
 
 
-    const validate = (input) => {
-        if(typeof input === 'undefined' || typeof input === undefined || typeof input === null) {
-            return "String of Undefined"
-        } else{
-            return input;
+   const addMongo = (i) => {
 
-        }
-        
-
-
-
-
-
-    }
-
-
+    console.log("Clicked");
+    console.log(i);
+   }
 
 
 
@@ -62,10 +58,16 @@ const AddBook = () => {
             />
 
             <ul>
+                
                 {results.map((result, i) => (
                     <li key = {i}>
-                        <Card 
+                        <Button
+                            value = {i}
+                            click = {() => addMongo(i)}
+                        />
+                        <Card
                             
+                            key = {i}
                             bookTitle = {result.volumeInfo.title}
                             subTitle = {result.volumeInfo.authors}
                             synopsis = {result.volumeInfo.description}
@@ -74,8 +76,8 @@ const AddBook = () => {
                                 ? ""
                                 : `${result.volumeInfo.imageLinks.thumbnail}`
                             }
-
                         />
+                        
                     </li>
                 ))}
             </ul>
